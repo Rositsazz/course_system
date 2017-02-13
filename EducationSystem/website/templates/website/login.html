@@ -1,24 +1,45 @@
 <style>
+body {
+  background-color: #c9c6c6;
+}
   .errors {
     color: red;
   }
+  .login-box {
+    width: 20%;
+    margin-left: 35%;
+    margin-top: 5%;
+    background-color: white;
+    padding: 20px;
+    border-radius: 15px;
+  }
+  .welcoming {
+    font-weight: 900;
+    padding-bottom: 30px;
+    color: #908c8c;
+  }
 </style>
+<div class="login-box">
+  <div class="welcoming"><span>Welcome, please provide your credentials!</span></div>
+  <form action="{% url 'website:login' %}" method="POST">
+    {% csrf_token %}
+    <label for="email">
+      Email:
+    </label>
+    <input id="email" name="email" type="email">
+    <br/>
+    <label>
+      Password:
+      <input id="password" name="password" type="password">
+    </label>
+    <br/>
+    <input type="submit" value='Login!'>
+    <a href="{% url 'website:register' %}">
+      Register?
+     </a><br>
+  </form>
 
-<form action="{% url 'website:login' %}" method="POST">
-  {% csrf_token %}
-  <label for="email">
-    Email:
-  </label>
-  <input id="email" name="email" type="email">
-
-  <label>
-    Password:
-    <input id="password" name="password" type="password">
-  </label>
-
-  <input type="submit" value='Login!'>
-</form>
-
-<div class="errors">
-  {{error}}
+  <div class="errors">
+    <b>{{error}}</b>
+  </div>
 </div>
