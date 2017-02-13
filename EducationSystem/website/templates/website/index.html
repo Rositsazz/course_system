@@ -36,7 +36,7 @@
     <div class="float-container">
       <div class="col-4" id="factorial_container">
         <div class="form-container">
-          <form method="POST" action="{% url 'fact_name' %}">
+          <form method="POST" action="{% url 'website:fact' %}">
             {% csrf_token %}
             <p>Calculate n!</p>
             <label>Enter n:</label>
@@ -49,7 +49,7 @@
 
       <div class="col-4" id="fibonacci_container">
       <div class="form-container">
-          <form method="POST" action="{% url 'fib_name' %}">
+          <form method="POST" action="{% url 'website:fib' %}">
             {% csrf_token %}
             <p>Find nth fibonacci.</p>
             <label>Enter n:</label>
@@ -62,7 +62,7 @@
 
       <div class="col-4" id="primes_container">
         <div class="form-container">
-          <form method="POST" action="{% url 'prime_name' %}">
+          <form method="POST" action="{% url 'website:prime' %}">
             {% csrf_token %}
             <p>List first n prime numbers.</p>
             <label>Enter n:</label>
