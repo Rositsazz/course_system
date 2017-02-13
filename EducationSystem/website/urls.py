@@ -9,4 +9,6 @@ urlpatterns = [
     url(r'^index/fib/$', views.fib, name="fib"),
     url(r'^index/prime/$', views.prime, name="prime"),
     url(r'^register$', views.register, name='register'),
+    url(r'^login$', views.login, name='login'),
+    url(r'^profile$', views.home, name='profile'),
 ]
