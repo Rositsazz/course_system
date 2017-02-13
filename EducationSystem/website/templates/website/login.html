@@ -2,6 +2,9 @@
 body {
   background-color: #c9c6c6;
 }
+label {
+  display: block;
+}
   .errors {
     color: red;
   }
@@ -18,6 +21,19 @@ body {
     padding-bottom: 30px;
     color: #908c8c;
   }
+  .login-btn {
+    background-color: #ffa500cc;
+    padding: 5px;
+    border-radius: 7px;
+    border-color: #ffa500cc;
+  }
+  a {
+    color: #7e7e8c;
+  }
+  a:hover {
+    color: #ffa500cc;
+  }
+
 </style>
 <div class="login-box">
   <div class="welcoming"><span>Welcome, please provide your credentials!</span></div>
@@ -28,12 +44,12 @@ body {
     </label>
     <input id="email" name="email" type="email">
     <br/>
-    <label>
+    <label for="password">
       Password:
-      <input id="password" name="password" type="password">
     </label>
+    <input id="password" name="password" type="password">
     <br/>
-    <input type="submit" value='Login!'>
+    <input class="login-btn" type="submit" value='Login!'>
     <a href="{% url 'website:register' %}">
       Register?
      </a><br>
