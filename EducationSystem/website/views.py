@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from django.core.urlresolvers import reverse, reverse_lazy
 
+from datetime import datetime
+
 from .models import User
 from .decorators import login_required
 from .helpers import (factorial, fibonacci, first_N_primes)
@@ -26,9 +28,9 @@ def register(request):
 
 def login(request):
     session_email = request.session.get('email', False)
-
+    # import ipdb; ipdb.set_trace()
     if session_email:
-        return redirect(reverse('profile'))
+        return redirect(reverse('website:profile'))
 
     if request.method == 'POST':
         email = request.POST['email']
@@ -40,13 +42,17 @@ def login(request):
             error = 'Wrong username/password'
         else:
             request.session['email'] = email
-            return redirect(reverse('website:profile'))
+            response =  redirect(reverse('website:profile'))
+            response.set_cookie('last_connection', datetime.now())
+            response.set_cookie('username', email)
+            return response
 
     return render(request, 'website/login.html', locals())
 
 
-@login_required(redirect_url=reverse_lazy('login'))
+@login_required(redirect_url=reverse_lazy('website:index'))
 def home(request):
+    # import ipdb; ipdb.set_trace()
     if request.method == 'POST':
         if request.POST.get('delete_session', False):
             session_key = request.POST.get('session_key')
@@ -58,7 +64,13 @@ def home(request):
 
             request.session[session_key] = session_value
 
-    return render(request, 'website/index.html', locals())
+    return render(request, 'website/profile.html', locals())
+
+
+def logout(request):
+    request.session.flush()
+
+    return redirect(reverse('website:login'))
 
 
 def index(request):

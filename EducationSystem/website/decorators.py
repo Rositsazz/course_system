@@ -4,7 +4,7 @@ from functools import wraps
 
 def login_required(redirect_url=None):
     if redirect_url is None:
-        redirect_url = '/'
+        redirect_url = 'website:index'
 
     def decorator(func):
 
