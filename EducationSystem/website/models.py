@@ -28,3 +28,5 @@ class User(models.Model):
 
     def __str__(self):
         return self.email
+class Topic(models.Model):
+    week = models.IntegerField()
