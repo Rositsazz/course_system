@@ -28,3 +28,8 @@ class User(models.Model):
 
     def __str__(self):
         return self.email
+
+
+class Course(models.Model):
+    description = models.CharField(max_length=100)
+
