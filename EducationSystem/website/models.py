@@ -31,5 +31,5 @@ class User(models.Model):
 
 
 class Course(models.Model):
-    description = models.CharField(max_length=110)
+    description = models.CharField(max_length=10)
 
